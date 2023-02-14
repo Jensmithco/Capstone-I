@@ -1,0 +1,309 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*.
+
+```{r}
+impact <- read.csv('Food_Production.csv')
+impact
+```
+
+```{r}
+filter(impact,Total_emissions > 1)
+view(filter(impact,Total_emissions > 1))
+```
+
+```{r}
+filter(impact,Total_emissions > 1.5)
+view(filter(impact,Total_emissions > 1.5))
+```
+
+```{r}
+filter(impact,Land.use.change > 0)
+view(filter(impact,Land.use.change > 0))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Land.use.change > 0)
+view(filter(impact, Total_emissions > 1.5, Land.use.change > 0))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Animal.Feed > 0)
+view(filter(impact, Total_emissions > 1.5, Animal.Feed > 0))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Farm > 1)
+view(filter(impact, Total_emissions > 1.5, Farm > 1))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Processing > 0)
+view(filter(impact, Total_emissions > 1.5, Processing > 0))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Transport > 0.1)
+view(filter(impact, Total_emissions > 1.5, Transport > 0.1))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Packging > 0.1)
+view(filter(impact, Total_emissions > 1.5, Packging > 0.1))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Retail > 0)
+view(filter(impact, Total_emissions > 1.5, Retail > 0))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Eutrophying.emissions.per.1000kcal..gPO.eq.per.1000kcal. > 0)
+view(filter(impact, Total_emissions > 1.5, Eutrophying.emissions.per.1000kcal..gPO.eq.per.1000kcal. > 0))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Freshwater.withdrawals.per.1000kcal..liters.per.1000kcal. > 100)
+view(filter(impact, Total_emissions > 1.5, Freshwater.withdrawals.per.1000kcal..liters.per.1000kcal. > 100))
+```
+
+```{r}
+filter(impact, Total_emissions > 1.5, Greenhouse.gas.emissions.per.1000kcal..kgCO.eq.per.1000kcal. > 1)
+view(filter(impact, Total_emissions > 1.5, Greenhouse.gas.emissions.per.1000kcal..kgCO.eq.per.1000kcal. > 1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Land.use.change)) +
+  geom_col(fill = "darkgreen") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Animal.Feed)) +
+  geom_col(fill = "#56B4E9") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Farm)) +
+  geom_col(fill = "orange") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Processing)) +
+  geom_col(fill = "darkblue") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Transport)) +
+  geom_col(fill = "brown") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Packging)) +
+  geom_col(fill = "pink3") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Retail)) +
+  geom_col(fill = "purple") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Total_emissions)) +
+  geom_col(fill = "violetred3") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Eutrophying.emissions.per.kilogram..gPO.eq.per.kilogram.)) +
+  geom_col(fill = "tomato1") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust=1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Eutrophying.emissions.per.100g.protein..gPO.eq.per.100.grams.protein.)) +
+  geom_col(fill = "gold") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust=.70))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Eutrophying.emissions.per.1000kcal..gPO.eq.per.1000kcal.)) +
+  geom_col(fill = "grey56") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust=1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Freshwater.withdrawals.per.kilogram..liters.per.kilogram.)) +
+  geom_col(fill = "darkturquoise") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust=1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Freshwater.withdrawals.per.1000kcal..liters.per.1000kcal.)) +
+  geom_col(fill = "steelblue") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust=1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Freshwater.withdrawals.per.100g.protein..liters.per.100g.protein.)) +
+  geom_col(fill = "navyblue") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust=.95))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Greenhouse.gas.emissions.per.1000kcal..kgCO.eq.per.1000kcal.)) +
+  geom_col(fill = "seagreen4") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust=0.92))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Greenhouse.gas.emissions.per.100g.protein..kgCO.eq.per.100g.protein.)) +
+  geom_col(fill = "darkorchid") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust=0.7))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Land.use.per.kilogram..m..per.kilogram.)) +
+  geom_col(fill = "chocolate4") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust = 1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Land.use.per.1000kcal..m..per.1000kcal.)) +
+  geom_col(fill = "gold") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust = 1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Land.use.per.100g.protein..m..per.100g.protein.)) +
+  geom_col(fill = "goldenrod2") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust = 1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Scarcity.weighted.water.use.per.kilogram..liters.per.kilogram.)) +
+  geom_col(fill = "blue1") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust = 1))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Scarcity.weighted.water.use.per.100g.protein..liters.per.100g.protein.)) +
+  geom_col(fill = "cyan4") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust = .8))
+```
+
+```{r}
+ggplot(impact, aes(x = Food.product, y = Scarcity.weighted.water.use.per.1000kcal..liters.per.1000.kilocalories.)) +
+  geom_col(fill = "aquamarine1") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), axis.title.y = element_text(hjust = .75))
+
+```
+
+```{r}
+ggplot(data = impact, mapping = aes(x = Land.use.change, y = Total_emissions)) +
+  geom_point(mapping = aes(color = Food.product))
+```
+
+```{r}
+ggplot(data = impact) +
+  geom_point(mapping = aes(x = Land.use.change, y = Total_emissions))
+```
+
+```{r}
+ggplot(data = impact, mapping = aes(x = Processing, y = Total_emissions)) +
+  geom_point(mapping = aes(color = Food.product))
+```
+
+```{r}
+ggplot(data = impact) + geom_point(mapping = aes(x = Food.product, y = Total_emissions > 1, color = Land.use.change > 1)) +
+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r}
+ggplot(data = impact) + geom_point(mapping = aes(x = Food.product, y = Total_emissions, color = Total_emissions)) +
+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r}
+ggplot(subset(impact, Total_emissions > 6), aes(x = Total_emissions, y = Greenhouse.gas.emissions.per.1000kcal..kgCO.eq.per.1000kcal.)) +
+  geom_point(mapping = aes(size = 1.5, color = Food.product, fill = Food.product)) +
+  theme(axis.title.y = element_text(hjust=0.80))
+```
+
+```{r}
+ggplot(subset(impact, Total_emissions > 6), aes(x = Total_emissions, y = Greenhouse.gas.emissions.per.100g.protein..kgCO.eq.per.100g.protein.)) +
+  geom_point(mapping = aes(size = 1.5, color = Food.product, fill = Food.product))
+```
+
+```{r}
+ggplot(subset(impact, Total_emissions > 6), aes(x = Total_emissions, y = Land.use.per.kilogram..m..per.kilogram.)) +
+  geom_point(mapping = aes(size = 1.5, color = Food.product, fill = Food.product))
+```
+
+```{r}
+ggplot(subset(impact, Total_emissions < 0.5), aes(x = Total_emissions, y = Greenhouse.gas.emissions.per.1000kcal..kgCO.eq.per.1000kcal.)) +
+  geom_point(mapping = aes(size = 1.5, color = Food.product, fill = Food.product)) +
+theme(axis.title.y = element_text(hjust=0.80))
+```
+
+```{r}
+ggplot(data = impact) +
+  geom_point(mapping = aes(x = Land.use.change, y = Total_emissions, color = Land.use.change > 1))
+```
+
+```{r}
+ggplot(subset(impact, Land.use.change < .5), aes(x = Total_emissions, y = Food.product)) + 
+  geom_point(color = 'black')
+```
+
+```{r}
+ggplot(subset(impact, Land.use.change > 1), aes(x = Total_emissions, y = Food.product)) + 
+  geom_point(color = 'black')
+```
+
+```{r}
+ggplot(subset(impact, Total_emissions > 5), aes(x = Land.use.change, y = Total_emissions)) +
+  geom_col(mapping = aes(color = Food.product))
+```
+
+```{r}
+ggplot(subset(impact, Eutrophying.emissions.per.1000kcal..gPO.eq.per.1000kcal. > 10), aes(x = Eutrophying.emissions.per.1000kcal..gPO.eq.per.1000kcal., y = Total_emissions)) +
+  geom_col(mapping = aes(color = Food.product, fill = Food.product))
+```
+
+```{r}
+ggplot(subset(impact, Retail > 0), aes(x = Retail, y = Total_emissions)) +
+  geom_col(mapping = aes(color = Food.product, fill = Food.product))
+```
+
+```{r}
+ggplot(subset(impact, Transport > 0.3), aes(x = Transport, y = Total_emissions)) +
+  geom_col(mapping = aes(color = Food.product, fill = Food.product))
+```
+
+```{r}
+ggplot(subset(impact, Processing > 0.5), aes(x = Land.use.change, y = Total_emissions)) +
+  geom_col(mapping = aes(color = Food.product, fill = Food.product))
+```
+
+```{r}
+ggplot(subset(impact, Packging > 0.2), aes(x = Packging, y = Total_emissions)) +
+  geom_col(mapping = aes(color = Food.product, fill = Food.product))
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
